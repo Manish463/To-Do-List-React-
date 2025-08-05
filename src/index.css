@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #7c3aed;
+    border-radius: 50%;
+    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #6d28d9;
+}
+
+input[type="checkbox"]:checked::after {
+    font: initial;
+    content: "✔";
+    color: #fff !important;
+    font-size: 16px;
+}
