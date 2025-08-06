@@ -95,7 +95,7 @@ function App() {
           <h2 className='text-lg font-bold'>Add a Todo</h2>
           <div className="flex">
             {/* Input for new todo */}
-            <input onChange={handleChange} onKeyDown={(e) => {if(e.code == "Enter" && todo.length > 3) handleAdd()}} value={todo} type="text" className='w-full bg-white rounded-full px-5 py-1' placeholder='Write your todo here......'/>
+            <input onChange={handleChange} onKeyDown={(e) => {if (e.code == "Enter" ) {(todo.length > 3) ? handleAdd() : alert("Minimum 4 letters required.")}}} value={todo} type="text" className='inp w-full bg-white rounded-full px-5 py-1' placeholder='Write your todo here......'/>
             {/* Add button, disabled if input is too short */}
             <button onClick={handleAdd} disabled={todo.length<=3} className='bg-violet-800 hover:bg-violet-900 disabled:bg-violet-500 px-3 py-1 text-sm font-bold rounded-full mx-2 md:mx-5 text-white'>Add</button>
           </div>
