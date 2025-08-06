@@ -87,22 +87,25 @@ function App() {
     <>
       {/* Navbar component */}
       <Navbar/>
-      <div className="md:container md:mx-auto mx-3 my-5 rounded-xl bg-violet-100 p-8 min-h-[80vh] md:w-[35%] w-full">
+      <div className="md:container md:mx-auto select-auto mx-3 my-3 md:my-5 rounded-xl bg-violet-100 p-5 md:p-8 min-h-[80vh] md:w-[35%]">
         {/* App title */}
-        <h1 className='flex justify-center text-2xl font-bold'>iTask - Manage your task at one place</h1>
+        <h1 className='flex justify-center text-xl md:text-2xl font-bold'>iTask - Manage your task at one place</h1>
         {/* Section to add a new todo */}
-        <div className="addTodo flex flex-col gap-2 my-7">
+        <div className="addTodo flex flex-col gap-2 my-5 md:my-7">
           <h2 className='text-lg font-bold'>Add a Todo</h2>
           <div className="flex">
             {/* Input for new todo */}
             <input onChange={handleChange} onKeyDown={(e) => {if(e.code == "Enter" && todo.length > 3) handleAdd()}} value={todo} type="text" className='w-full bg-white rounded-full px-5 py-1' placeholder='Write your todo here......'/>
             {/* Add button, disabled if input is too short */}
-            <button onClick={handleAdd} disabled={todo.length<=3} className='bg-violet-800 hover:bg-violet-900 disabled:bg-violet-500 px-3 py-1 text-sm font-bold rounded-full mx-5 text-white'>Add</button>
+            <button onClick={handleAdd} disabled={todo.length<=3} className='bg-violet-800 hover:bg-violet-900 disabled:bg-violet-500 px-3 py-1 text-sm font-bold rounded-full mx-2 md:mx-5 text-white'>Add</button>
           </div>
         </div>
         {/* Toggle to show/hide finished tasks */}
-        <input type="checkbox" id="show" onChange={toggleShowFinished} checked={showFinished} /> 
-        <label className='mx-2' htmlFor="show">Show Finished</label>
+        <div className='flex align-middle'>
+          <span className='w-[25px] h-[25px] self-center'><input type="checkbox" id="show" onChange={toggleShowFinished} checked={showFinished} className='self-center' /></span>
+          <label className='mx-2' htmlFor="show">Show Finished</label>
+        </div>
+        
         {/* Divider */}
         <div className='h-[1px] w-[90%] bg-black opacity-50 m-auto my-2 mb-5'></div>
         {/* Todos list section */}
@@ -117,9 +120,9 @@ function App() {
             return ((showFinished || !item.isCompleted) && <div key={item.id} className="todo flex w-full my-3 justify-between gap-2 bg-violet-200 p-3 rounded-md">
               <div className='flex gap-3 w-[80%]'>
                 {/* Checkbox to mark as completed */}
-                <input type="checkbox" name={item.id} onChange={handleCheckbox} checked={item.isCompleted} className='self-center'/>
+                <span className='w-[25px] h-[25px] self-center'><input type="checkbox" name={item.id} onChange={handleCheckbox} checked={item.isCompleted} className='self-center'/></span>
                 {/* Todo text, strikethrough if completed */}
-                <div className={item.isCompleted?"line-through":""}>{item.todo}</div>
+                <div className={item.isCompleted?"line-through opacity-60":""}>{item.todo}</div>
               </div>
               {/* Edit and Delete buttons */}
               <div className="button flex h-full self-center">
